@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<form id="file" action="/register/submit_message" method="post" enctype="multipart/form-data">
+    用户名：<input type="text" id="userName" name="userName"><br/>
+    手机号码：<input type="text" id="userPhone" name="userPhone"><br/>
+    年龄：<input type="text" id="userAge" name="userAge"><br/>
+    密码：<input type="password" id="userPassword" name="userPassword"><br/>
+    头像:<input type="file" id="userImg" name="userImg"><br/>
+    <button type="submit">提交</button>
+</form>
+<!--<script>-->
+    <!--function doRegister() {-->
+        <!--$.ajax({-->
+            <!--url: "/register/submit_message",-->
+            <!--type: "POST",-->
+            <!--contentType: "application/json; charset=utf-8",-->
+            <!--dataType: "json",-->
+            <!--data:{-->
+                <!--userId:$("#userId"),-->
+                <!--userPassword: $("#userPassword")-->
+
+            <!--},-->
+            <!--success:function(data){-->
+                <!--layer.closeAll();-->
+                <!--console.log(data);-->
+                <!--if(data.code == 0){		//服务端Result类中定义的code-->
+                    <!--layer.msg("成功");	//会在屏幕上弹出一个短暂的提示信息，并自动消失-->
+                    <!--window.location.href="/success";	//登录成功后的跳转在这里实现-->
+                <!--}else{-->
+                    <!--layer.msg(data.msg);	//服务端Result类中定义的msg-->
+                <!--}-->
+            <!--},-->
+            <!--error:function(){-->
+                <!--layer.closeAll();-->
+            <!--}-->
+        <!--})-->
+    <!--}-->
+<!--</script>-->
+</body>
+</html>

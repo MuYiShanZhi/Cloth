@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ClothesMessageMapper">
+  <resultMap id="BaseResultMap" type="pojo.ClothesMessage">
+    <id column="clothes_id" jdbcType="INTEGER" property="clothesId" />
+    <result column="clothes_img" jdbcType="VARCHAR" property="clothesImg" />
+    <result column="clothes_name" jdbcType="VARCHAR" property="clothesName" />
+    <result column="clothes_type" jdbcType="INTEGER" property="clothesType" />
+    <result column="clothes_color" jdbcType="VARCHAR" property="clothesColor" />
+    <result column="clothes_fabric" jdbcType="VARCHAR" property="clothesFabric" />
+    <result column="clothes_location" jdbcType="VARCHAR" property="clothesLocation" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    clothes_id, clothes_img, clothes_name, clothes_type, clothes_color, clothes_fabric, 
+    clothes_location, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clothes_message
+    where clothes_id = #{clothesId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clothes_message
+    where clothes_id = #{clothesId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.ClothesMessage">
+    insert into clothes_message (clothes_id, clothes_img, clothes_name, 
+      clothes_type, clothes_color, clothes_fabric, 
+      clothes_location, create_time, update_time
+      )
+    values (#{clothesId,jdbcType=INTEGER}, #{clothesImg,jdbcType=VARCHAR}, #{clothesName,jdbcType=VARCHAR}, 
+      #{clothesType,jdbcType=INTEGER}, #{clothesColor,jdbcType=VARCHAR}, #{clothesFabric,jdbcType=VARCHAR}, 
+      #{clothesLocation,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.ClothesMessage">
+    insert into clothes_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clothesId != null">
+        clothes_id,
+      </if>
+      <if test="clothesImg != null">
+        clothes_img,
+      </if>
+      <if test="clothesName != null">
+        clothes_name,
+      </if>
+      <if test="clothesType != null">
+        clothes_type,
+      </if>
+      <if test="clothesColor != null">
+        clothes_color,
+      </if>
+      <if test="clothesFabric != null">
+        clothes_fabric,
+      </if>
+      <if test="clothesLocation != null">
+        clothes_location,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clothesId != null">
+        #{clothesId,jdbcType=INTEGER},
+      </if>
+      <if test="clothesImg != null">
+        #{clothesImg,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesName != null">
+        #{clothesName,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesType != null">
+        #{clothesType,jdbcType=INTEGER},
+      </if>
+      <if test="clothesColor != null">
+        #{clothesColor,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesFabric != null">
+        #{clothesFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesLocation != null">
+        #{clothesLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.ClothesMessage">
+    update clothes_message
+    <set>
+      <if test="clothesImg != null">
+        clothes_img = #{clothesImg,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesName != null">
+        clothes_name = #{clothesName,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesType != null">
+        clothes_type = #{clothesType,jdbcType=INTEGER},
+      </if>
+      <if test="clothesColor != null">
+        clothes_color = #{clothesColor,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesFabric != null">
+        clothes_fabric = #{clothesFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="clothesLocation != null">
+        clothes_location = #{clothesLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where clothes_id = #{clothesId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.ClothesMessage">
+    update clothes_message
+    set clothes_img = #{clothesImg,jdbcType=VARCHAR},
+      clothes_name = #{clothesName,jdbcType=VARCHAR},
+      clothes_type = #{clothesType,jdbcType=INTEGER},
+      clothes_color = #{clothesColor,jdbcType=VARCHAR},
+      clothes_fabric = #{clothesFabric,jdbcType=VARCHAR},
+      clothes_location = #{clothesLocation,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where clothes_id = #{clothesId,jdbcType=INTEGER}
+  </update>
+</mapper>

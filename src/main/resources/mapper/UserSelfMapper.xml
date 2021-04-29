@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserSelfMapper">
+  <resultMap id="BaseResultMap" type="pojo.UserSelf">
+    <id column="self_id" jdbcType="INTEGER" property="selfId" />
+    <result column="self_name" jdbcType="VARCHAR" property="selfName" />
+    <result column="self_label" jdbcType="VARCHAR" property="selfLabel" />
+    <result column="self_top" jdbcType="INTEGER" property="selfTop" />
+    <result column="self_download" jdbcType="INTEGER" property="selfDownload" />
+    <result column="self_dress" jdbcType="INTEGER" property="selfDress" />
+    <result column="self_coat" jdbcType="INTEGER" property="selfCoat" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    self_id, self_name, self_label, self_top, self_download, self_dress, self_coat, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_self
+    where self_id = #{selfId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_self
+    where self_id = #{selfId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.UserSelf">
+    insert into user_self (self_id, self_name, self_label, 
+      self_top, self_download, self_dress, 
+      self_coat, create_time, update_time
+      )
+    values (#{selfId,jdbcType=INTEGER}, #{selfName,jdbcType=VARCHAR}, #{selfLabel,jdbcType=VARCHAR}, 
+      #{selfTop,jdbcType=INTEGER}, #{selfDownload,jdbcType=INTEGER}, #{selfDress,jdbcType=INTEGER}, 
+      #{selfCoat,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.UserSelf">
+    insert into user_self
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="selfId != null">
+        self_id,
+      </if>
+      <if test="selfName != null">
+        self_name,
+      </if>
+      <if test="selfLabel != null">
+        self_label,
+      </if>
+      <if test="selfTop != null">
+        self_top,
+      </if>
+      <if test="selfDownload != null">
+        self_download,
+      </if>
+      <if test="selfDress != null">
+        self_dress,
+      </if>
+      <if test="selfCoat != null">
+        self_coat,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="selfId != null">
+        #{selfId,jdbcType=INTEGER},
+      </if>
+      <if test="selfName != null">
+        #{selfName,jdbcType=VARCHAR},
+      </if>
+      <if test="selfLabel != null">
+        #{selfLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="selfTop != null">
+        #{selfTop,jdbcType=INTEGER},
+      </if>
+      <if test="selfDownload != null">
+        #{selfDownload,jdbcType=INTEGER},
+      </if>
+      <if test="selfDress != null">
+        #{selfDress,jdbcType=INTEGER},
+      </if>
+      <if test="selfCoat != null">
+        #{selfCoat,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.UserSelf">
+    update user_self
+    <set>
+      <if test="selfName != null">
+        self_name = #{selfName,jdbcType=VARCHAR},
+      </if>
+      <if test="selfLabel != null">
+        self_label = #{selfLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="selfTop != null">
+        self_top = #{selfTop,jdbcType=INTEGER},
+      </if>
+      <if test="selfDownload != null">
+        self_download = #{selfDownload,jdbcType=INTEGER},
+      </if>
+      <if test="selfDress != null">
+        self_dress = #{selfDress,jdbcType=INTEGER},
+      </if>
+      <if test="selfCoat != null">
+        self_coat = #{selfCoat,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where self_id = #{selfId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.UserSelf">
+    update user_self
+    set self_name = #{selfName,jdbcType=VARCHAR},
+      self_label = #{selfLabel,jdbcType=VARCHAR},
+      self_top = #{selfTop,jdbcType=INTEGER},
+      self_download = #{selfDownload,jdbcType=INTEGER},
+      self_dress = #{selfDress,jdbcType=INTEGER},
+      self_coat = #{selfCoat,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where self_id = #{selfId,jdbcType=INTEGER}
+  </update>
+</mapper>

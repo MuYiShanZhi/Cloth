@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DressMapper">
+  <resultMap id="BaseResultMap" type="pojo.Dress">
+    <id column="dress_id" jdbcType="INTEGER" property="dressId" />
+    <result column="dress_name" jdbcType="VARCHAR" property="dressName" />
+    <result column="dress_type" jdbcType="INTEGER" property="dressType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dress_id, dress_name, dress_type, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dress
+    where dress_id = #{dressId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dress
+    where dress_id = #{dressId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.Dress">
+    insert into dress (dress_id, dress_name, dress_type, 
+      create_time, update_time)
+    values (#{dressId,jdbcType=INTEGER}, #{dressName,jdbcType=VARCHAR}, #{dressType,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Dress">
+    insert into dress
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dressId != null">
+        dress_id,
+      </if>
+      <if test="dressName != null">
+        dress_name,
+      </if>
+      <if test="dressType != null">
+        dress_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dressId != null">
+        #{dressId,jdbcType=INTEGER},
+      </if>
+      <if test="dressName != null">
+        #{dressName,jdbcType=VARCHAR},
+      </if>
+      <if test="dressType != null">
+        #{dressType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Dress">
+    update dress
+    <set>
+      <if test="dressName != null">
+        dress_name = #{dressName,jdbcType=VARCHAR},
+      </if>
+      <if test="dressType != null">
+        dress_type = #{dressType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dress_id = #{dressId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Dress">
+    update dress
+    set dress_name = #{dressName,jdbcType=VARCHAR},
+      dress_type = #{dressType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where dress_id = #{dressId,jdbcType=INTEGER}
+  </update>
+</mapper>
