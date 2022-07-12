@@ -18,7 +18,7 @@ import java.util.Map;
 public class GetSiteUtil{
 
         // 高德地图key
-        private static final String GDMAP_KEY = "2d783793e49dfb327b67c66358e1e003";
+        private static final String GDMAP_KEY = "2d783793e49dfb327b67c66358e1e004";
 
         /**
          * 获取当前Ip的地理位置，XX省XX市。没有参数，默认发出请求的ip地址
